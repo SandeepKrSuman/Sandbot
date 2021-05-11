@@ -13,7 +13,6 @@ module.exports = function(message){
         const args = message.content.split(' ');
         const cmd = args.shift().substring(1).toLowerCase();
         if(!commands[cmd]){
-            console.log('command not found');
             return;
         }
         commands[cmd](message, args);

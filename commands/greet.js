@@ -1,10 +1,6 @@
 function greet(msg, args){
     const arg = args.length > 1 ? args.join(" ") : args.join("");
     switch(arg.toLowerCase()){
-        case '':
-        case ' ':
-            msg.channel.send(`Hello ${msg.author} . May you have a cheerful day ahead. You are awesome! ☺`);
-            break;
         case 'hello':
             msg.reply('Hi 👋🏻');
             break;
@@ -21,7 +17,12 @@ function greet(msg, args){
         case 'la la':
             msg.reply('Le o 🤣');
             break;
-        default: break;
+        case '':
+        case ' ':
+        default:
+            const greetings = ['Bonjour', 'Hola', 'Namaste 🙏', 'Asalaam alaikum', 'Olá', 'Konnichiwa', 'Salve', 'Nǐn hǎo', 'Zdravstvuyte', 'Dzień dobry', 'Merhaba', 'God dag'];
+            const index = Math.floor(Math.random()*greetings.length);
+            msg.channel.send(`${greetings[index]} ${msg.author} . May you have a cheerful day ahead. You are awesome! ☺`);
     }
 }
 
