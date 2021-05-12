@@ -1,10 +1,14 @@
+const Discord = require('discord.js');
+
 function avatar(msg, args){
     if(!msg.mentions.members.first()){
-        msg.reply(`Your avatar: ${msg.author.displayAvatarURL()}`);
+        const attachment = new Discord.MessageAttachment(msg.author.displayAvatarURL());
+        msg.channel.send(`${msg.author} Your Avatar:`, attachment);
     }
     else{
         const mention = msg.mentions.members.first().user;
-        msg.channel.send(`${mention.username}'s avatar: ${mention.displayAvatarURL()}`);
+        const attachment = new Discord.MessageAttachment(mention.displayAvatarURL());
+        msg.channel.send(`${mention.username}'s avatar:`, attachment);
     }
 }
 
