@@ -16,6 +16,9 @@ function cmd(msg, args){
             {name: '!avatar', value: '```\n sends the requested avatar. \n```'},
             {name: '!cmd', value: '```\n view all the available bot commands. \n```'},
             {name: '!info', value: '```\n info of the server/user. \n```'},
+            {name: '!coin', value: '```\n flips a coin for you. \n```'},
+            {name: '!choose', value: '```\n make a selection from your options. \n```'},
+            {name: '!img', value: '```\n sends random image. \n```'},
             {name: '\u200B', value: '\u200B'},
         ],
         footer: {
