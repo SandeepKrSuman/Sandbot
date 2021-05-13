@@ -10,12 +10,16 @@ async function img(msg, args){
         for(let i=0; i<4; i++){
             let j = Math.floor(Math.random()*json.length);
             let image = json[j].download_url;
-            msg.author.send(image);
+            msg.author.send(image).catch(console.error);
         }
-        msg.reply('Sent 4 random images to your DM! 😀');
+        msg.reply('Sent 4 random images to your DM! 🤫😀');
     }
     else if(imgurl){
-        msg.channel.send(imgurl);
+        const imgembd = {
+            description: `${msg.author} This one's for you 🤗`,
+            image: {url: `${imgurl}`}
+        };
+        msg.channel.send({embed:imgembd});
     }
     else{
         msg.reply('Unable to find an image 😢');
