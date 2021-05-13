@@ -1,14 +1,18 @@
 require('dotenv').config();
 
+const fs = require('fs');
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
-const commandsHandler = require("./commandsHandler");
-
-client.once('ready', () => {
-	console.log('The bot is now ready!');
-});
-
-client.on('message', commandsHandler);
+for(const file of eventFiles){
+	const event = require(`./events/${file}`);
+	if(event.once){
+		client.once(event.name, (...args) => event.execute(...args, client));
+	}
+	else{
+		client.on(event.name, (...args) => event.execute(...args, client));
+	}
+}
 
 client.login(process.env.BOT_TOKEN);
