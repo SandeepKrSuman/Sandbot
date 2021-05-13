@@ -24,7 +24,7 @@ async function num(msg, args){
     let response = await fetch(numurl);
     let data = await response.json();
     if(data.found){
-        msg.channel.send(data.text);
+        msg.channel.send(`\`\`\`\n ${data.text} \n\`\`\``);
     }
     else if(!data.found){
         msg.reply(`No trivia associated with ${numb}. Try a different number.` );
