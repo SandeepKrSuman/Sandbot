@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-function avatar(msg, args){
+function avatar(msg){
     if(msg.channel.type === 'dm'){
         msg.channel.send('This command cannot be used in dms!');
         return;

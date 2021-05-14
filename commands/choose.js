@@ -1,4 +1,4 @@
-function choose(msg, args){
+function choose(msg){
     const pos = msg.content.indexOf(' ');
     const arg = msg.content.substring(pos+1);
     const options = arg.split(',');
