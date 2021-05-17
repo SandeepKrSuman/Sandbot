@@ -1,20 +1,23 @@
 function info(msg){
     const guild = msg.guild;
-    const guildinfo = {
-        color: '#da7f8f',
-        title: `Info for ${guild.name}`,
-        thumbnail: {url: `${guild.iconURL()}`},
-        fields: [
-            {name: '\u200B', value: '\u200B'},
-            {name: 'Owner', value: `${guild.owner.user.tag}`, inline: true},
-            {name: 'Region', value: `${guild.region.toUpperCase()}`, inline: true},
-            {name: '\u200B', value: '\u200B'},
-            {name: 'Created', value: `${handleDate(guild.createdAt)}`, inline: true},
-            {name: 'Total Members', value: `${guild.memberCount}`, inline: true},
-        ],
-    };
-
-    msg.channel.send({embed:guildinfo});
+    if(guild.available){
+        const guildinfo = {
+            color: '#da7f8f',
+            title: `Info for ${guild.name}`,
+            thumbnail: {url: `${guild.iconURL()}`},
+            fields: [
+                {name: '\u200B', value: '\u200B'},
+                {name: 'Owner', value: `${guild.owner.user.tag}`, inline: true},
+                {name: 'Region', value: `${guild.region.toUpperCase()}`, inline: true},
+                {name: '\u200B', value: '\u200B'},
+                {name: 'Created', value: `${handleDate(guild.createdAt)}`, inline: true},
+                {name: 'Total Members', value: `${guild.memberCount}`, inline: true},
+            ],
+        };
+    
+        msg.channel.send({embed:guildinfo});
+    }
+    
 }
 
 function handleDate(dt){
